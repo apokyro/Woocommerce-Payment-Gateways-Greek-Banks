@@ -64,7 +64,7 @@ function woocommerce_piraeusbank_init() {
             $this->description = $this->get_option('description');
             $this->pb_PayMerchantId = $this->get_option('pb_PayMerchantId');
             $this->pb_AcquirerId = $this->get_option('pb_AcquirerId');
-            $this->pb_PosId = $this->get_option('pb_PosId');
+            $this->pb_PosId = apply_filters('wc_piraeus_gateway_posid', $this->get_option('pb_PosId'));
             $this->pb_Username = $this->get_option('pb_Username');
             $this->pb_Password = $this->get_option('pb_Password');
             $this->pb_authorize = $this->get_option('pb_authorize');
@@ -281,7 +281,7 @@ function woocommerce_piraeusbank_init() {
 				jQuery("#submit_pb_payment_form").click();
 			');
 
-                    $LanCode = "el-GR";
+                    $LanCode = apply_filters('wc_piraeus_gateway_form_language', 'el-GR');
                     /*
                       Other available Language codes
                       en-US: English
